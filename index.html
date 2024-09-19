@@ -1,9 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<p>TESTING</p>
-<a href="about.html">About Us</a>
+
+<h1>Our Products</h1>
+
+<div class="product" onclick="showDetails('Product 1', 'Description of Product 1.')">
+    <h2>Product 1</h2>
+    <p>Price: $10.00</p>
+</div>
+
+<div class="product" onclick="showDetails('Product 2', 'Description of Product 2.')">
+    <h2>Product 2</h2>
+    <p>Price: $15.00</p>
+</div>
+
+<div class="product" onclick="showDetails('Product 3', 'Description of Product 3.')">
+    <h2>Product 3</h2>
+    <p>Price: $20.00</p>
+</div>
+
+<div class="details" id="productDetails"></div>
+
+<script>
+    function showDetails(productName, productDescription) {
+        var detailsDiv = document.getElementById("productDetails");
+        detailsDiv.innerHTML = `<h2>${productName}</h2><p>${productDescription}</p>`;
+        detailsDiv.style.display = 'block';
+    }
+</script>
+
 </body>
 </html>
