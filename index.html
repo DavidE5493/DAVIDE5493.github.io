@@ -19,11 +19,16 @@
             display: none;
             margin-top: 10px;
         }
+        #searchBar {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
 <h1>Our Products</h1>
+
+<input type="text" id="searchBar" placeholder="Search for products..." onkeyup="searchProducts()">
 
 <div class="product" onclick="showDetails('Product 1', 'Description of Product 1.')">
     <h2>Product 1</h2>
@@ -47,6 +52,21 @@
         var detailsDiv = document.getElementById("productDetails");
         detailsDiv.innerHTML = `<h2>${productName}</h2><p>${productDescription}</p>`;
         detailsDiv.style.display = 'block';
+    }
+
+    function searchProducts() {
+        var input = document.getElementById('searchBar').value.toLowerCase();
+        var products = document.getElementsByClassName('product');
+
+        for (var i = 0; i < products.length; i++) {
+            var productName = products[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+            var productDescription = products[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+            if (productName.includes(input) || productDescription.includes(input)) {
+                products[i].style.display = '';
+            } else {
+                products[i].style.display = 'none';
+            }
+        }
     }
 </script>
 
